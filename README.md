@@ -69,3 +69,30 @@ python solve.py \
 
 For each task, expected results are
 ![expect](assets/expected.jpg)
+
+
+### Arbitraty size problem
+You can solve the problem for rectangle images. 
+
+```bash
+python solve_arbitrary.py \
+    --imgH 768 \
+    --imgW 1152 \
+    --img_path samples/div2k_example.png \
+    --prompt "a high quality photo of animal, bush, close-up, fox, grass, green, greenery, hide, panda, red, red panda, stare" \
+    --task deblur_motion \
+    --deg_scale 61 \
+    --efficient_memory;
+```
+
+Measurement            |  Reconstruction
+:-------------------------:|:-------------------------:
+![](assets/rect_input.png)  |  ![](assets/rect_output.png)
+
+## How to choose task and solver
+
+You can freely change the task and solver using arguments:
+- `task` : sr_avgpool / sr_bicubic / deblur_gauss / deblur_motion
+- `method` : psld / flowchef / flowdps
+
+If you want to change the amount of degradation, change `deg_scale`. For SR tasks, it refers to the downscale factor, and for deblurring tasks, it refers to the kernel size. 
