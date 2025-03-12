@@ -21,12 +21,12 @@ First, clone this repository and install requirements.
 ```
 git clone https://github.com/FlowDPS-Inverse/FlowDPS.git
 cd FlowDPS
-conda env create -f environment.yaml
+conda create -n flowdps python==3.10
 conda activate flowdps
+pip install -r requirements.txt
 ```
 
-> If you encounter pip error during install, remove pytorch from the envirionment.yaml and manually install using commands at https://pytorch.org/get-started/previous-versions/.
-
+> Provided requirements.txt installs torch with CUDA 11.8. If you are using other versions, please change it.
 
 ### Examples
 
