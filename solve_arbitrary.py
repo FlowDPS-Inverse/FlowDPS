@@ -19,7 +19,7 @@ def precompute(args, prompts:List[str], solver) -> List[torch.Tensor]:
     pooled_emb_set = []
 
     num_samples = args.num_samples if args.num_samples > 0 else len(prompts)
-    for prompt in prompts[:args.num_samples]:
+    for prompt in prompts[:num_samples]:
         prompt_emb, pooled_emb = solver.encode_prompt(prompt, batch_size=1)
         prompt_emb_set.append(prompt_emb)
         pooled_emb_set.append(pooled_emb)
