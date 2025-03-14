@@ -28,6 +28,11 @@ pip install -r requirements.txt
 
 > Provided requirements.txt installs torch with CUDA 11.8. If you are using other versions, please change it.
 
+For the motion blur, we need to clone below repository.
+```
+git clone https://github.com/LeviBorodenko/motionblur.git
+```
+
 ### Examples
 
 You can quickly check the results using following examples.
