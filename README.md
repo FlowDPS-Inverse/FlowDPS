@@ -101,3 +101,9 @@ You can freely change the task and solver using arguments:
 - `method` : psld / flowchef / flowdps
 
 If you want to change the amount of degradation, change `deg_scale`. For SR tasks, it refers to the downscale factor, and for deblurring tasks, it refers to the kernel size. 
+
+## Efficient inference
+
+If you use `--efficient_memory`, text encoder will pre-compute text embeddings and is removed from the GPU.
+
+This allows us to solve inverse problem with a single GPU with VRAM 24GB.
