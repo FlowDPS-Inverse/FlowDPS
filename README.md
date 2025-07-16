@@ -1,4 +1,4 @@
-# FlowDPS: Flow-Driven Posterior Sampling for Inverse Problems
+# [ICCV2025] FlowDPS: Flow-Driven Posterior Sampling for Inverse Problems
 
 ![img](assets/main.jpg)
 
