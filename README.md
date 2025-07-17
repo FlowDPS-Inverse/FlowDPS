@@ -7,9 +7,9 @@
 
 ❗️Flow matching is a recent state-of-the-art framework for generative modeling based on ordinary differential equations (ODEs). While closely related to diffusion models, __it provides a more general perspective__ on generative modeling. 
 
-❓ Although inverse problem solving has been extensively explored using diffusion models, it has not been rigorously examined within the broader context of flow models. Therefore, __we extend the diffusion inverse solvers (DIS)— which perform posterior sampling by combining a denoising diffusion prior with an likelihood gradient—into the flow framework.__
+❓ Although inverse problem solving has been extensively explored using diffusion models, it has not been rigorously examined within the broader context of flow models. Therefore, __we extend diffusion inverse solvers (DIS)— which perform posterior sampling by combining a denoising diffusion prior with a likelihood gradient—into the flow framework.__
 
-👍 Our proposed solver, Flow-Driven Posterior Sampling (FlowDPS), can also be seamlessly integrated into a latent flow model with a transformer architecture. Across four linear inverse problems, we confirm that FlowDPS outperforms state-of-the-art alternatives, all without requiring additional training.
+👍 Our proposed framework, Flow-Driven Posterior Sampling (FlowDPS), can also be seamlessly integrated into a latent flow model with a transformer architecture. Across four linear inverse problems, we confirm that FlowDPS outperforms state-of-the-art alternatives, all without requiring additional training.
 
 
 ## Quick Start
@@ -26,16 +26,16 @@ conda activate flowdps
 pip install -r requirements.txt
 ```
 
-> Provided requirements.txt installs torch with CUDA 11.8. If you are using other versions, please change it.
+> The provided requirements.txt installs torch with CUDA 11.8. If you are using other versions, please change it.
 
-For the motion blur, we need to clone below repository.
+For the motion blur problem, clone the repository below.
 ```
 git clone https://github.com/LeviBorodenko/motionblur.git
 ```
 
 ### Examples
 
-You can quickly check the results using following examples.
+You can quickly check the results using the following examples.
 
 **Example 1. Super-resolution x 12 (avg-pool) / Dog**
 ```
@@ -58,7 +58,7 @@ python solve.py \
     --deg_scale 12 \
     --efficient_memory;
 ```
-> The prompt (after "a high quality photo of") is extracted by DAPE from measurement.
+> The prompt (after "a high quality photo of") is extracted by DAPE from the given measurement.
 
 **Example 3. Motion Deblur / Human**
 ```
@@ -76,8 +76,8 @@ For each task, expected results are
 ![expect](assets/expected.jpg)
 
 
-### Arbitraty size problem
-You can solve the problem for rectangle images. 
+### Arbitrary size problem
+You can solve inverse problems for rectangular-shaped images. 
 
 ```bash
 python solve_arbitrary.py \
@@ -96,14 +96,14 @@ Measurement            |  Reconstruction
 
 ## How to choose task and solver
 
-You can freely change the task and solver using arguments:
+You can freely change the task and solver using the following arguments:
 - `task` : sr_avgpool / sr_bicubic / deblur_gauss / deblur_motion
 - `method` : psld / flowchef / flowdps
 
-If you want to change the amount of degradation, change `deg_scale`. For SR tasks, it refers to the downscale factor, and for deblurring tasks, it refers to the kernel size. 
+If you want to change the amount of degradation, change `deg_scale`. For SR tasks, it refers to the downscaling factor, and for deblurring tasks, it refers to the kernel size. 
 
 ## Efficient inference
 
-If you use `--efficient_memory`, text encoder will pre-compute text embeddings and is removed from the GPU.
+If you use `--efficient_memory`, the text encoder will pre-compute text embeddings and be removed from the GPU.
 
-This allows us to solve inverse problem with a single GPU with VRAM 24GB.
+This allows us to solve inverse problem with a single GPU with VRAM of 24GB.
